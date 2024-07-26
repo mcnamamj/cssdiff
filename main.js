@@ -1,6 +1,15 @@
 $(document).ready(function () {
   var cssdiff = require(".");
 
+  $("#diff-old,$diff-new").change(function () {
+    $("#example").html(
+      "https://inlife.github.io/cssdiff/?old=" +
+        encodeURIComponent($("#diff-old").val()) +
+        "&new=" +
+        encodeURIComponent($("#diff-new").val())
+    );
+  });
+
   $("#diff-calculate").click(function (e) {
     e.preventDefault(); // Prevent default action
 
