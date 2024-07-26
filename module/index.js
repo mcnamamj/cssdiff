@@ -32,12 +32,23 @@ module.exports = {
           "&profile=css3&usermedium=all&warning=1&vextwarning=&lang=en",
         "_blank"
       );
-      return { removed: first, added: second };
+      first = css.parse("#invalid-css { }");
     }
     try {
       var ast2 = css.parse(second);
     } catch (e) {
-      return { removed: second, added: first };
+      alert(
+        "There was an error parsing the new file. Please check the syntax and try again."
+      );
+      // open the css validator
+      // https://jigsaw.w3.org/css-validator/validator
+      window.open(
+        "https://jigsaw.w3.org/css-validator/validator?text=" +
+          encodeURIComponent(second) +
+          "&profile=css3&usermedium=all&warning=1&vextwarning=&lang=en",
+        "_blank"
+      );
+      second = css.parse("#invalid-css { }");
     }
 
     // remove positions of blocks, and sort them
