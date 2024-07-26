@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   $("#diff-old,#diff-new").change(function () {
     var url = document.URL;
-    var urlNoParams = new URLSearchParams(url.split("?")[0]);
+    var urlNoParams = url.split("?")[0];
     $("#example").html(
       urlNoParams +
         "?old=" +
