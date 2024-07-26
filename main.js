@@ -2,6 +2,8 @@ $(document).ready(function () {
   var cssdiff = require(".");
 
   $("#diff-calculate").click(function (e) {
+    e.preventDefault(); // Prevent default action
+
     var cssold = $("#diff-old").val() || "";
     var cssnew = $("#diff-new").val() || "";
 
@@ -15,6 +17,22 @@ $(document).ready(function () {
     $("html, body").animate({ scrollTop: $("#result").offset().top }, 250);
   });
 
+  function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+      sURLVariables = sPageURL.split("&"),
+      sParameterName;
+
+    for (var i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split("=");
+      if (sParameterName[0] === sParam) {
+        return sParameterName[1] === undefined
+          ? true
+          : decodeURIComponent(sParameterName[1]);
+      }
+    }
+    return false;
+  }
+
   var oldViaURL = getUrlParameter("old") || "";
   var newViaURL = getUrlParameter("new") || "";
 
@@ -27,21 +45,3 @@ $(document).ready(function () {
   }
   $("#diff-calculate").click();
 });
-
-var getUrlParameter = function getUrlParameter(sParam) {
-  var sPageURL = window.location.search.substring(1),
-    sURLVariables = sPageURL.split("&"),
-    sParameterName,
-    i;
-
-  for (i = 0; i < sURLVariables.length; i++) {
-    sParameterName = sURLVariables[i].split("=");
-
-    if (sParameterName[0] === sParam) {
-      return sParameterName[1] === undefined
-        ? true
-        : decodeURIComponent(sParameterName[1]);
-    }
-  }
-  return false;
-};
