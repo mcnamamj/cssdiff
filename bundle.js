@@ -23,11 +23,15 @@ $(document).ready(function () {
 
   var oldViaURL = getUrlParameter("old") || "";
   var newViaURL = getUrlParameter("new") || "";
-  debugger;
-  if (oldViaURL || newViaURL) {
-    $("#diff-old").val("Updated " + oldViaURL);
-    $("#diff-new").val("Updated " + newViaURL);
+
+  if (oldViaURL) {
+    $("#diff-old").val(oldViaURL);
   }
+
+  if (newViaURL) {
+    $("#diff-new").val(newViaURL);
+  }
+  $("#diff-calculate").click();
 });
 
 var getUrlParameter = function getUrlParameter(sParam) {
