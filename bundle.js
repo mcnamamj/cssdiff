@@ -8,13 +8,18 @@ $(document).ready(function () {
   var cssdiff = require(".");
 
   $("#diff-old,#diff-new").change(function () {
+    var url = document.URL;
+    var urlNoParams = new URLSearchParams(url.split("?")[0]);
     $("#example").html(
-      "https://inlife.github.io/cssdiff/?old=" +
+      urlNoParams +
+        "?old=" +
         encodeURIComponent($("#diff-old").val()) +
         "&new=" +
         encodeURIComponent($("#diff-new").val())
     );
   });
+
+  $("#diff-new").change();
 
   $("#diff-calculate").click(function (e) {
     e.preventDefault(); // Prevent default action
