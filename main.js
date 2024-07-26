@@ -21,6 +21,7 @@ $(document).ready(function () {
   if (oldViaURL) {
     $("#diff-old").val(oldViaURL);
   }
+
   if (newViaURL) {
     $("#diff-new").val(newViaURL);
   }
