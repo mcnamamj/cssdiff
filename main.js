@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var cssdiff = require(".");
 
-  $("#diff-old,$diff-new").change(function () {
+  $("#diff-old,#diff-new").change(function () {
     $("#example").html(
       "https://inlife.github.io/cssdiff/?old=" +
         encodeURIComponent($("#diff-old").val()) +
